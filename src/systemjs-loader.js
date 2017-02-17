@@ -177,6 +177,8 @@ SystemJSLoader.prototype.set = function (key, module) {
   return this.registry.set(key, module);
 };
 SystemJSLoader.prototype.newModule = function (bindings) {
+  if (!bindings.__esModule)
+    bindings = { default: bindings, __useDefault: true };
   return new ModuleNamespace(bindings);
 };
 SystemJSLoader.prototype.isModule = isModule;
